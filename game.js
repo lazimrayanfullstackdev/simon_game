@@ -1,10 +1,20 @@
-var gamePattern= [];
+var gamePattern = [];
+var buttonColours = ["red","blue","green","yellow"];
 function nextSequence(){
     var randomNumber = Math.floor(Math.random()*4);
     return randomNumber;
 }
-var buttonColours = ["red", "blue", "green", "yellow"];
+
 var randomChosenColour = buttonColours[nextSequence()];
-//console.log("Random Chosen Color is: "+randomChosenColour);
+//console.log("Choosen color is: "+randomChosenColour);
 gamePattern.push(randomChosenColour);
-//console.log(gamePattern);
+//console.log("Game Pattern Array is: "+gamePattern);
+
+function flash(){ 
+    $('#'+randomChosenColour).fadeOut(800).fadeIn(800); 
+ } 
+ $('#'+randomChosenColour).ready(function(){ 
+     setInterval('flash()',200); 
+ });
+
+//$('#'+randomChosenColour).fadeOut(900).delay(300).fadeIn(800);
