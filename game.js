@@ -41,5 +41,9 @@ $(document).keypress(function(){
 });
 
 function checkAnswer(currentLevel){
-
+    if(gamePattern[currentLevel]==userClickedPattern[currentLevel]){
+        console.log("Matched - Success");
+    }else{
+        console.log("Matched - Wrong");
+    }
 }
