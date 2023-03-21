@@ -14,7 +14,13 @@ function nextSequence(){
     playSound(randomChosenColour);
     $("#heading2-tag").html('level '+level);
 }
-//nextSequence();
+function startover(){
+    level = 0;
+    gamePattern = [];
+    keypress = 0;
+    userClickedPattern = [];
+}
+
 $(".btn").click(function (){
     var userChosenColour = this.id;
     //console.log(userChosenColour);
@@ -47,10 +53,16 @@ function checkAnswer(currentLevel){
         if (userClickedPattern.length==gamePattern.length) {
             setTimeout(function() {
                 nextSequence();
-              }, 1000);
+              }, 500);
               userClickedPattern = [];
         }
     }else{
-        console.log("Matched - Wrong");
+        playSound("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function(){
+            $("body").removeClass("game-over");
+        },200);
+        $("#heading2-tag").html("Game Over, Press any key to Restart.");
+        startover();
     }
 }
